@@ -17,7 +17,7 @@ file = open('GatheredInfo.csv', 'w')
 # In this case, we're saving it to our csv file with a function attached to it.
 writer = csv.writer(file)
 
-writer.writerow(['Name', 'Info'])
+writer.writerow(['Name', 'Capital'])
 
 # This is is where we are calling our import and sends a GET request to the specified url
 target_page = requests.get("http://www.scrapethissite.com/pages/simple/")
@@ -27,13 +27,13 @@ soup = BeautifulSoup(target_page.text, 'lxml')
 
 # We are taking our assigned variables and going through the CSS file to grab from the tags we chose. 
 name = soup.find_all('h3', attrs={"class":"country-name"})
-info = soup.find_all('div', attrs={"class":"country-info"})
+capital = soup.find_all('span', attrs={"class":"country-capital"})
 
 # The zip() function returns a zip object, which is an iterator of tuples where the first item in each passed iterator is paired together, 
 # and then the second item in each passed iterator are paired together etc.
-for name, info in zip(name, info):
-    print(name.text + "-" + info.text)
+for name, capital in zip(name, capital):
+    print(name.text + "-" + capital.text)
    
-    writer.writerow([name.text, info.text])
+    writer.writerow([name.text, capital.text])
 # close() does what you think it does.
 file.close()
