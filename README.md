@@ -1,3 +1,1 @@
 # Python-Fundamentals-WebScaper
-
-# Practice.
