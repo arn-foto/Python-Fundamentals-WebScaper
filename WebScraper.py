@@ -1,3 +1,5 @@
-import bs4 from BeautifulSoup
+from bs4 import BeautifulSoup
 import requests
 import csv
+
+print("this works")
