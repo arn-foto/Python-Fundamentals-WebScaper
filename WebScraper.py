@@ -23,7 +23,7 @@ writer.writerow(['Name', 'Capital', 'Population', 'Area'])
 target_page = requests.get("http://www.scrapethissite.com/pages/simple/")
 
 # BeautifulSoup() is built into bs4 and takes 2 arguments, one for the target and the other for the format
-soup = BeautifulSoup(target_page.text, 'html.parser')
+soup = BeautifulSoup(target_page.text, 'lxml')
 
 # We are taking our assigned variables and going through the CSS file to grab from the tags we chose. 
 name = soup.find_all('h3', attrs={"class":"country-name"})
